@@ -9,7 +9,7 @@ const FILES_TO_CACHE = [
   
   //set cache variable names
   const CACHE_NAME = 'static-cache-v3';
-  const DATA_CACHE_NAME = 'data-cache-v3';
+  const DATA_CACHE_NAME = 'data-cache-v2';
   
   //install
   self.addEventListener('install', function(evt) {
@@ -24,7 +24,7 @@ const FILES_TO_CACHE = [
   });
   
   //activate
-  self.addEventListener('install', function(evt) {
+  self.addEventListener('activate', function(evt) {
       evt.waitUntil(
           caches.keys().then(keyList => {
               return Promise.all(
@@ -60,6 +60,6 @@ const FILES_TO_CACHE = [
                   });
               }).catch(err => console.log(err))
           );
+          return;
       }
-      return;
   });
